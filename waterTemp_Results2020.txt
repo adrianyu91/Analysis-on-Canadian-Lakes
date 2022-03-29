@@ -1,0 +1,119 @@
+-------------------------------------
+Lake Temperature Averages
+Lake Superior: 6.72
+Michigan: 10.26
+Huron: 9.44
+Erie: 12.10
+Ontario: 11.29
+St. Claire: 11.49
+Total average: 10.22
+-------------------------------------
+Lake Erie maximum average temperature: 12.10
+Lake Superior has the minimum average temperature: 6.72
+-------------------------------------
+The Lakes that were above the average Temperature:
+Michigan
+Erie
+Ontario
+St. Claire
+-------------------------------------
+The Lakes that were above the below Temperature:
+Superior
+Huron
+-------------------------------------
+Lake Superior
+Coldest Temp: 1.15
+14/3
+15/3
+-------------------------------------
+Lake Michigan
+Coldest Temp: 2.25
+28/2
+1/3
+-------------------------------------
+Lake Huron
+Coldest Temp: 1.11
+1/3
+-------------------------------------
+Lake Erie
+Coldest Temp: 1.00
+1/3
+-------------------------------------
+Lake Ontario
+Coldest Temp: 2.51
+1/3
+-------------------------------------
+Lake St. Claire
+Coldest Temp: 0.20
+22/1
+23/1
+24/1
+25/1
+26/1
+1/2
+14/2
+15/2
+16/2
+18/2
+19/2
+20/2
+21/2
+22/2
+28/2
+29/2
+1/3
+-------------------------------------
+Lake Erie has the warmest overall temperature with a temperature of: 26.28
+Date: 10/7
+-------------------------------------
+Lake St. Claire has the coldest overall temperature with a temperature of: 0.20
+Date:
+22/1
+23/1
+24/1
+25/1
+26/1
+1/2
+14/2
+15/2
+16/2
+18/2
+19/2
+20/2
+21/2
+22/2
+28/2
+29/2
+1/3
+-------------------------------------
+Average Temperatures of the lakes during Summer:
+Lake Superior: 23.52C
+Lake Michigan: 23.24C
+Lake Huron: 22.24C
+Lake Erie: 20.86C
+Lake Ontario: 19.62C
+Lake St. Claire: 13.85C
+-------------------------------------
+Average Temperatures of the lakes during Winter:
+Lake Superior: 3.74C
+Lake Michigan: 3.16C
+Lake Huron: 2.79C
+Lake Erie: 2.49C
+Lake Ontario: 2.27C
+Lake St. Claire: 1.79C
+-------------------------------------
+Number of days that the lake temperature is above 20 C:
+Lake Superior: 365
+Lake Michigan: 421
+Lake Huron: 138
+Lake Erie: 92
+Lake Ontario: 82
+Lake St. Claire: 87
+-------------------------------------
+Number of days that the lake is freezing:
+Lake Superior: 365
+Lake Michigan: 421
+Lake Huron: 138
+Lake Erie: 92
+Lake Ontario: 82
+Lake St. Claire: 87

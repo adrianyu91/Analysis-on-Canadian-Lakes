@@ -1,0 +1,22 @@
+-------------------------------------
+Lake Temperature Averages
+Lake Superior: 6.06
+Michigan: 9.12
+Huron: 8.23
+Erie: 11.25
+Ontario: 9.81
+St. Claire: 10.75
+Total average: 9.20
+-------------------------------------
+Lake Erie maximum average temperature: 11.25
+Lake Superior has the minimum average temperature: 6.06
+-------------------------------------
+The Lakes that were above the average Temperature:
+Erie
+Ontario
+St. Claire
+-------------------------------------
+The Lakes that were above the below Temperature:
+Superior
+Michigan
+Huron
