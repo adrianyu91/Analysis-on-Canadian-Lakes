@@ -388,31 +388,31 @@ int main(void){
     }
     double* lake2D_2020[6]={Superior2020, Michigan2020, Huron2020, Erie2020, Ontario2020, St_Claire2020};//array of lake arrays (2d array)
     //Question 1 and 2
-    //average(lake2D_2020, lines_2020);
+    average(lake2D_2020, lines_2020);
     
     //Question 3
-    //coldestTemp(Superior2020, lines_2020, 0);//coldest temp of superior
-    //coldestTemp(Michigan2020, lines_2020, 1);//coldest temp of michigan
-    //coldestTemp(Huron2020, lines_2020, 2);//coldest temp of huron
-    //coldestTemp(Erie2020, lines_2020, 3);//coldest temp of erie
-    //coldestTemp(Ontario2020, lines_2020, 4);//coldest temp of ontario
-    //coldestTemp(St_Claire2020, lines_2020, 5);//coldest temp of st. claire
+    coldestTemp(Superior2020, lines_2020, 0);//coldest temp of superior
+    coldestTemp(Michigan2020, lines_2020, 1);//coldest temp of michigan
+    coldestTemp(Huron2020, lines_2020, 2);//coldest temp of huron
+    coldestTemp(Erie2020, lines_2020, 3);//coldest temp of erie
+    coldestTemp(Ontario2020, lines_2020, 4);//coldest temp of ontario
+    coldestTemp(St_Claire2020, lines_2020, 5);//coldest temp of st. claire
     
     //Question 4
-    //overall_warmest_temp(lake2D_2020, lines_2020);
-    //overall_coldest_temp(lake2D_2020,lines_2020);
+    overall_warmest_temp(lake2D_2020, lines_2020);
+    overall_coldest_temp(lake2D_2020,lines_2020);
 
     //Question 5
-    //summer_average(lake2D_2020);
+    summer_average(lake2D_2020);
 
     //Question 6
-    //winter_average(lake2D_2020);
+    winter_average(lake2D_2020);
 
     //Question 7
-    //swimming(lake2D_2020, lines_2020);
+    swimming(lake2D_2020, lines_2020);
 
     //Question 8
-    //lake_freeze(lake2D_2020, lines_2020);
+    lake_freeze(lake2D_2020, lines_2020);
 
     //Question 9
     FILE *fp2019 = fopen("2019_waterTemp.txt", "r");
