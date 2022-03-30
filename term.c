@@ -25,7 +25,6 @@ void average(double* lake2D[], int day){
     printf("St. Claire: %.2lf\n", lakeAverage[5]);
     printf("Total average: %.2lf\n", totavg);
     printf("-------------------------------------\n");
-    
     //finding the highest and lowest temperature average temperature
     double max=0, min=1000;
     int len = sizeof(lakeAverage)/sizeof(lakeAverage[0]);
@@ -200,6 +199,46 @@ void coldestTemp(double lakeNum[], double days, int lake_name){
         printf("%d/%d\n", day_date[i],month_date[i]);
     } 
 }
+/*Finding the warmest temperature for each lake
+*/
+void warmestTemp(double lakeNum[], double days, int lake_name){
+    double max=0;
+    //finds the warmest temp
+    for(int i=0; i<days; i++){
+        if(max<lakeNum[i]){
+            max=lakeNum[i];
+        }
+    }
+    //counts the number of duplicates
+    int count=0;
+    for(int i=0; i<days; i++){
+        if(max==lakeNum[i]){
+            count++;
+        }
+    }
+    //records the duplicated into the warm array
+    int warm[count];
+    int count2=0;
+    for(int i=0; i<days; i++){
+        if(max==lakeNum[i]){
+            warm[count2]=i+1;
+            count2++;
+        }
+    }
+    int month_date[count];
+    int day_date[count];
+    //sets the date of the warmest temperature
+    for(int i=0;i<count;i++){
+        month_date[i] = month(warm[i]);
+        day_date[i]=day(warm[i]);
+    }
+    printf("-------------------------------------\n");
+    printf("Lake %s\n", lakes[lake_name]);
+    printf("Warmest Temp: %.2lf\n", max);
+    for(int i=0;i<count;i++){
+        printf("%d/%d\n", day_date[i],month_date[i]);
+    } 
+}
 /*Finds the warmest overall temperature of all the lakes
 */
 void overall_warmest_temp(double* lake2D[], int numDays){
@@ -276,26 +315,30 @@ void summer_average(double* lake2d[]){
     int summer_start=171;//summer starts on day 172
     int summer_end=265;//summer ends on day 265
     int summer_day=94;//total of days in summer
-    double average_temp [6];
+    double average_temp [6][2];//2d array [lake name value][average temp]
     for(int i=0;i<6;i++){
+        average_temp[i][0]=i;
         for(int j=summer_start;j<summer_end;j++){
-            average_temp[i]+=lake2d[i][j];
+            average_temp[i][1]+=lake2d[i][j];
         }
-        average_temp[i]=average_temp[i]/summer_day;
+        average_temp[i][1]=average_temp[i][1]/summer_day;
     }
     //sorting from warmest temp to coldest temp
     for (int i=0; i<5; i++){ 
        for (int j=0; j<6-i-1; j++){
-           if(average_temp[j] < average_temp[j+1]){
-              float temp = average_temp[j];
-              average_temp[j]=average_temp[j+1];
-              average_temp[j+1]=temp;
+           if(average_temp[j][1] < average_temp[j+1][1]){
+              float temp = average_temp[j][1];//swapping the value
+              float temp_index = average_temp[j][0];//swapping the index
+              average_temp[j][1]=average_temp[j+1][1];
+              average_temp[j][0]=average_temp[j+1][0];
+              average_temp[j+1][1]=temp;
+              average_temp[j+1][0]=temp_index;
            }
        }
     }  
     printf("Average Temperatures of the lakes during Summer:\n");
     for(int i=0;i<6;i++){
-        printf("Lake %s: %.2fC\n",lakes[i],average_temp[i]);
+        printf("Lake %s: %.2fC\n",lakes[(int)average_temp[i][0]],average_temp[i][1]);
     }
 }
 /*Finds the average tempertaure of the lakes in the winter and sorts it from greatest to least
@@ -303,38 +346,43 @@ void summer_average(double* lake2d[]){
 void winter_average(double* lake2d[]){
     printf("-------------------------------------\n");
     int winter_start=0, winter_end=79;//first section of winter
-    double average_temp [6];
+    double average_temp [6][2];
     //adding up the sum of the temperatures during the first section of winter
     for(int i=0;i<6;i++){
+        average_temp[i][0]=i;
         for(int j=winter_start;j<winter_end;j++){
-            average_temp[i]+=lake2d[i][j];
+            average_temp[i][1]+=lake2d[i][j];
         }
     }
     //adding up the sum of the tempertature during the second section of winter
-    int winter2_start=354, winter2_end=365;
+    int winter2_start=354, winter2_end=366;
     for(int i=0;i<6;i++){
         for(int j=winter2_start;j<winter2_end;j++){
-            average_temp[i]+=lake2d[i][j];
+            average_temp[i][1]+=lake2d[i][j];
         }
     }
     //calculating average of each lake
-    int winter_days=90;//total days in winter
+    int winter_days=91;//total days in winter
     for(int i=0;i<6;i++){
-        average_temp[i]=average_temp[i]/winter_days;
+        average_temp[i][1]=average_temp[i][1]/winter_days;
     }
+    
     //sorting from warmest temp to coldest temp
     for (int i=0; i<5; i++){ 
        for (int j=0; j<6-i-1; j++){
-           if(average_temp[j] < average_temp[j+1]){
-              float temp = average_temp[j];
-              average_temp[j]=average_temp[j+1];
-              average_temp[j+1]=temp;
+           if(average_temp[j][1] < average_temp[j+1][1]){
+                float temp = average_temp[j][1];
+                float temp_index = average_temp[j][0];
+                average_temp[j][1]=average_temp[j+1][1];
+                average_temp[j][0]=average_temp[j+1][0];
+                average_temp[j+1][1]=temp;
+                average_temp[j+1][0]=temp_index;
            }
        }
-    }  
+    }
     printf("Average Temperatures of the lakes during Winter:\n");
     for(int i=0;i<6;i++){
-        printf("Lake %s: %.2fC\n",lakes[i],average_temp[i]);
+        printf("Lake %s: %.2fC\n",lakes[(int)average_temp[i][0]],average_temp[i][1]);
     }
 }
 /*Finding number of days where a person is comfortable swimming, when the temperature is above 20 C
@@ -350,26 +398,26 @@ void swimming(double* lake2d[], int numDays){
         }
     }
     printf("Number of days that the lake temperature is above 20 C:\n");
-    for(int i=0;i<6;i++){
-        printf("Lake %s: %d\n",lakes[i],total_days[i]);
+    for(int k=0;k<6;k++){
+        printf("Lake %s: %d\n",lakes[k],total_days[k]);
     }
 }
-
 void lake_freeze(double* lake2d[], int numDays){
     printf("-------------------------------------\n");
-    int total_days[6];
+    int total_day[6];
     for(int i=0;i<6;i++){
         for(int j=0;j<numDays;j++){
             if(lake2d[i][j]<0){
-                total_days[i]++;
+                total_day[i]++;
             }
         }
     }
     printf("Number of days that the lake is freezing:\n");
     for(int i=0;i<6;i++){
-        printf("Lake %s: %d\n",lakes[i],total_days[i]);
+        printf("Lake %s: %d\n",lakes[i],total_day[i]);
     }
 }
+
 int main(void){
     FILE *fp2020 = fopen("2020_waterTemp.txt", "r");
     FILE *rp2020 = fopen("2020_waterTemp.txt", "r");
@@ -388,30 +436,36 @@ int main(void){
     }
     double* lake2D_2020[6]={Superior2020, Michigan2020, Huron2020, Erie2020, Ontario2020, St_Claire2020};//array of lake arrays (2d array)
     //Question 1 and 2
-    //average(lake2D_2020, lines_2020);
+    average(lake2D_2020, lines_2020);
     
     //Question 3
-    //coldestTemp(Superior2020, lines_2020, 0);//coldest temp of superior
-    //coldestTemp(Michigan2020, lines_2020, 1);//coldest temp of michigan
-    //coldestTemp(Huron2020, lines_2020, 2);//coldest temp of huron
-    //coldestTemp(Erie2020, lines_2020, 3);//coldest temp of erie
-    //coldestTemp(Ontario2020, lines_2020, 4);//coldest temp of ontario
-    //coldestTemp(St_Claire2020, lines_2020, 5);//coldest temp of st. claire
+    coldestTemp(Superior2020, lines_2020, 0);//coldest temp of superior
+    coldestTemp(Michigan2020, lines_2020, 1);//coldest temp of michigan
+    coldestTemp(Huron2020, lines_2020, 2);//coldest temp of huron
+    coldestTemp(Erie2020, lines_2020, 3);//coldest temp of erie
+    coldestTemp(Ontario2020, lines_2020, 4);//coldest temp of ontario
+    coldestTemp(St_Claire2020, lines_2020, 5);//coldest temp of st. claire
+    warmestTemp(Superior2020, lines_2020, 0);//coldest temp of superior
+    warmestTemp(Michigan2020, lines_2020, 1);//coldest temp of michigan
+    warmestTemp(Huron2020, lines_2020, 2);//coldest temp of huron
+    warmestTemp(Erie2020, lines_2020, 3);//coldest temp of erie
+    warmestTemp(Ontario2020, lines_2020, 4);//coldest temp of ontario
+    warmestTemp(St_Claire2020, lines_2020, 5);//coldest temp of st. claire
     
     //Question 4
-    //overall_warmest_temp(lake2D_2020, lines_2020);
-    //overall_coldest_temp(lake2D_2020,lines_2020);
+    overall_warmest_temp(lake2D_2020, lines_2020);
+    overall_coldest_temp(lake2D_2020,lines_2020);
 
     //Question 5
-    //summer_average(lake2D_2020);
+    summer_average(lake2D_2020);
 
     //Question 6
-    //winter_average(lake2D_2020);
+    winter_average(lake2D_2020);
 
     //Question 7
     //swimming(lake2D_2020, lines_2020);
 
-    //Question 8
+    //Question 8;
     //lake_freeze(lake2D_2020, lines_2020);
 
     //Question 9
@@ -431,8 +485,7 @@ int main(void){
         fscanf(fp2019, "%d%d%lf%lf%lf%lf%lf%lf", &year2019[i], &day2019[i], &Superior2019[i], &Michigan2019[i], &Huron2019[i], &Erie2019[i], &Ontario2019[i], &St_Claire2019[i]);
     }
     double* lake2D_2019[6]={Superior2019, Michigan2019, Huron2019, Erie2019, Ontario2019, St_Claire2019};//array of lake arrays (2d array)
-
-    average(lake2D_2019, lines_2019);
+    //average(lake2D_2019, lines_2019);
     
     return 0;
 }
