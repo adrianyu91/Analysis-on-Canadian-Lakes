@@ -445,12 +445,15 @@ int main(void){
     coldestTemp(Erie2020, lines_2020, 3);//coldest temp of erie
     coldestTemp(Ontario2020, lines_2020, 4);//coldest temp of ontario
     coldestTemp(St_Claire2020, lines_2020, 5);//coldest temp of st. claire
+<<<<<<< HEAD
     warmestTemp(Superior2020, lines_2020, 0);//coldest temp of superior
     warmestTemp(Michigan2020, lines_2020, 1);//coldest temp of michigan
     warmestTemp(Huron2020, lines_2020, 2);//coldest temp of huron
     warmestTemp(Erie2020, lines_2020, 3);//coldest temp of erie
     warmestTemp(Ontario2020, lines_2020, 4);//coldest temp of ontario
     warmestTemp(St_Claire2020, lines_2020, 5);//coldest temp of st. claire
+=======
+>>>>>>> e8969a2eb1bb7e2d45a54ef9e1258ab9c4fd5d76
     
     //Question 4
     overall_warmest_temp(lake2D_2020, lines_2020);
@@ -463,10 +466,15 @@ int main(void){
     winter_average(lake2D_2020);
 
     //Question 7
-    //swimming(lake2D_2020, lines_2020);
+    swimming(lake2D_2020, lines_2020);
 
+<<<<<<< HEAD
     //Question 8;
     //lake_freeze(lake2D_2020, lines_2020);
+=======
+    //Question 8
+    lake_freeze(lake2D_2020, lines_2020);
+>>>>>>> e8969a2eb1bb7e2d45a54ef9e1258ab9c4fd5d76
 
     //Question 9
     FILE *fp2019 = fopen("2019_waterTemp.txt", "r");
